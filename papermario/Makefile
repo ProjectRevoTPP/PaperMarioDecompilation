@@ -1,4 +1,4 @@
-# Makefile to rebuild SM64 split image
+# Makefile to rebuild Paper Mario split image
 
 ################ Target Executable and Sources ###############
 
@@ -31,13 +31,14 @@ O_FILES := $(foreach file,$(C_FILES),$(BUILD_DIR)/$(file:.c=.o)) \
 ##################### Compiler Options #######################
 CROSS = mips-linux-gnu-
 AS = $(CROSS)as
-CC = $(CROSS)gcc
+CC = tools/gcc-2.8.1/cc1
 LD = $(CROSS)ld
 OBJDUMP = $(CROSS)objdump
 OBJCOPY = $(CROSS)objcopy
+CPP = cpp -P
 
 ASFLAGS = -EB -march=vr4300 -mtune=vr4300
-CFLAGS  = -Wall -O2 -mtune=vr4300 -march=vr4300 -G 0 -c
+CFLAGS  = -O2 -quiet
 LDFLAGS = -T undefined_syms.txt -T $(LD_SCRIPT) -Map $(BUILD_DIR)/papermario.map
 
 ####################### Other Tools #########################
@@ -75,25 +76,25 @@ $(BUILD_DIR):
 	mkdir $(BUILD_DIR)
 
 $(BUILD_DIR)/$(TARGET).elf: $(O_FILES) $(LD_SCRIPT) $(BUILD_DIR)
-	@$(LD) $(LDFLAGS) -o $@ $(O_FILES)
+	$(LD) $(LDFLAGS) -o $@ $(O_FILES)
+
+$(BUILD_DIR)/%.s: %.c $(BUILD_DIR)
+	$(CPP) $< | $(CC) $(CFLAGS) -o $@
 
 $(BUILD_DIR)/%.o: %.s $(BUILD_DIR)
-	@$(AS) $(ASFLAGS) -o $@ $<
-
-$(BUILD_DIR)/%.o: %.c $(BUILD_DIR)
-	@$(CC) $(CFLAGS) -o $@ $<
+	$(AS) $(ASFLAGS) -o $@ $<
 
 $(BUILD_DIR)/%.o: %.bin $(BUILD_DIR)
-	@$(LD) -r -b binary -o $@ $<
+	$(LD) -r -b binary -o $@ $<
 
 $(BUILD_DIR)/%.yay0.o: %.yay0 $(BUILD_DIR)
-	@$(LD) -r -b binary -o $@ $<
+	$(LD) -r -b binary -o $@ $<
 
 $(BUILD_DIR)/%.FS.o: %.FS $(BUILD_DIR)
-	@$(LD) -r -b binary -o $@ $<
+	$(LD) -r -b binary -o $@ $<
 
 $(BUILD_DIR)/%.bgm.o: %.bgm $(BUILD_DIR)
-	@$(LD) -r -b binary -o $@ $<
+	$(LD) -r -b binary -o $@ $<
 
 $(BUILD_DIR)/$(TARGET).bin: $(BUILD_DIR)/$(TARGET).elf
 	$(OBJCOPY) $< $@ -O binary

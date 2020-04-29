@@ -19,7 +19,7 @@ osSiRawWriteIo:
 /* 047C20 8006C820 AFBF0018 */  sw    $ra, 0x18($sp)
 /* 047C24 8006C824 0C01B5F8 */  jal   osSiDeviceBusy
 /* 047C28 8006C828 00A08821 */   addu  $s1, $a1, $zero
-/* 047C2C 8006C82C 54400005 */  bnel  $v0, $zero, .L8006C844
+/* 047C2C 8006C82C 54400005 */  bnezl $v0, .L8006C844
 /* 047C30 8006C830 2402FFFF */   addiu $v0, $zero, -1
 /* 047C34 8006C834 3C02A000 */  lui   $v0, 0xa000
 /* 047C38 8006C838 02021025 */  or    $v0, $s0, $v0

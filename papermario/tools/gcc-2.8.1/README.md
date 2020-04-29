@@ -1,0 +1,1 @@
+LEGAL NOTICE: This cc1 binary was created by applying the gcc-2.8.1.diff file to a gcc-2.8.1 stock source and compiling the cc1 binary from it. This notice is to comply with the GPL license to state how it was created.

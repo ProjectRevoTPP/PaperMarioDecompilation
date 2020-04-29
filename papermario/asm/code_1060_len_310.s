@@ -182,7 +182,7 @@ func_80025CFC:
 /* 0012D8 80025ED8 00663025 */   or    $a2, $v1, $a2
 /* 0012DC 80025EDC 3407FFDF */  ori   $a3, $zero, 0xffdf
 /* 0012E0 80025EE0 00F2102A */  slt   $v0, $a3, $s2
-/* 0012E4 80025EE4 54400001 */  bnel  $v0, $zero, .L80025EEC
+/* 0012E4 80025EE4 54400001 */  bnezl $v0, .L80025EEC
 /* 0012E8 80025EE8 02569021 */   addu  $s2, $s2, $s6
 .L80025EEC:
 /* 0012EC 80025EEC 2694FFFF */  addiu $s4, $s4, -1

@@ -193,7 +193,7 @@ func_8005EC18:
 /* 03A060 8005EC60 24060001 */   addiu $a2, $zero, 1
 /* 03A064 8005EC64 0C01971C */  jal   osSpTaskYielded
 /* 03A068 8005EC68 26240010 */   addiu $a0, $s1, 0x10
-/* 03A06C 8005EC6C 54400001 */  bnel  $v0, $zero, .L8005EC74
+/* 03A06C 8005EC6C 54400001 */  bnezl $v0, .L8005EC74
 /* 03A070 8005EC70 24100001 */   addiu $s0, $zero, 1
 .L8005EC74:
 /* 03A074 8005EC74 8FA20010 */  lw    $v0, 0x10($sp)

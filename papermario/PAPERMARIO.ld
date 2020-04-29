@@ -35,6 +35,8 @@ SECTIONS
    /* 0x80026740 001B40-003BF0 [20B0] */
    .text80026740 0x80026740 : AT(0x001B40) {
       build/asm/code_1b40_len_20b0.o(.text80026740);
+      build/src/func_80027190.o(.text);
+      build/asm/code_800271A0.o(.text80026740);
    }
 
    /* 0x800287F0 003BF0-0042E0 [6F0] */

@@ -168,7 +168,7 @@ step_battle:
 /* 00EDE0 800339E0 24020026 */  addiu $v0, $zero, 0x26
 /* 00EDE4 800339E4 54620006 */  bnel  $v1, $v0, .L80033A00
 /* 00EDE8 800339E8 24040005 */   addiu $a0, $zero, 5
-/* 00EDEC 800339EC 54800004 */  bnel  $a0, $zero, .L80033A00
+/* 00EDEC 800339EC 54800004 */  bnezl $a0, .L80033A00
 /* 00EDF0 800339F0 24040005 */   addiu $a0, $zero, 5
 /* 00EDF4 800339F4 34A20001 */  ori   $v0, $a1, 1
 .L800339F8:

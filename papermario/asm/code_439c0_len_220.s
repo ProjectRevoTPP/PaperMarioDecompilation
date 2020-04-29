@@ -149,7 +149,7 @@ osPfsReleasePages:
 /* 043BA8 800687A8 8C820060 */  lw    $v0, 0x60($a0)
 /* 043BAC 800687AC 3066FFFF */  andi  $a2, $v1, 0xffff
 /* 043BB0 800687B0 00C2102A */  slt   $v0, $a2, $v0
-/* 043BB4 800687B4 54400005 */  bnel  $v0, $zero, .L800687CC
+/* 043BB4 800687B4 54400005 */  bnezl $v0, .L800687CC
 /* 043BB8 800687B8 A5230000 */   sh    $v1, ($t1)
 /* 043BBC 800687BC 00061202 */  srl   $v0, $a2, 8
 /* 043BC0 800687C0 1047FFF1 */  beq   $v0, $a3, .L80068788

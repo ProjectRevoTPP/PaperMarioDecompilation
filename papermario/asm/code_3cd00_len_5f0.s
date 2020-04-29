@@ -215,7 +215,7 @@ osContInit:
 /* 03CFD0 80061BD0 AC223DB0 */   sw    $v0, 0x3db0($at)
 /* 03CFD4 80061BD4 00409021 */  addu  $s2, $v0, $zero
 /* 03CFD8 80061BD8 00609821 */  addu  $s3, $v1, $zero
-/* 03CFDC 80061BDC 56400022 */  bnel  $s2, $zero, .L80061C68
+/* 03CFDC 80061BDC 56400022 */  bnezl $s2, .L80061C68
 /* 03CFE0 80061BE0 24020004 */   addiu $v0, $zero, 4
 /* 03CFE4 80061BE4 16400007 */  bnez  $s2, .L80061C04
 /* 03CFE8 80061BE8 27B10040 */   addiu $s1, $sp, 0x40
